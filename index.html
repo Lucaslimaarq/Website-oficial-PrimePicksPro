@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimePicksPro — International Sports Betting Consultancy</title>
+  <meta name="description" content="PrimePicksPro provides audited sports betting consultancy, bankroll management, and daily entries for consistent results." />
+  <link rel="icon" href="https://res.cloudinary.com/dklmqjcnk/image/upload/v1757628467/logo_bola_transparente_q9imzu.png" />
+
+  <!-- SEO/OpenGraph -->
+  <meta property="og:title" content="PrimePicksPro — International Sports Betting Consultancy" />
+  <meta property="og:description" content="Auditable results, bankroll management and daily entries. Join VIP or follow our free group." />
+  <meta property="og:image" content="https://res.cloudinary.com/dklmqjcnk/image/upload/v1757628467/logo_bola_transparente_q9imzu.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root{ --brand-orange:#FF6F00; --brand-yellow:#FFC107; }
+    html,body{ height:100%; }
+    body{ font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#121212; color:#fff; overflow-x:hidden; }
+    .fade-in{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-in.visible{ opacity:1; transform:translateY(0); }
+    .brand-orange{ color:var(--brand-orange); }
+    .brand-yellow{ color:var(--brand-yellow); }
+    .dark-card{ background:#1E1E1E; }
+    .nav-link{ transition:color .3s ease; }
+    .nav-link:hover{ color:var(--brand-yellow); }
+
+    /* Botões com hover consistente */
+    .btn{ border-radius:9999px; padding:.625rem 1.25rem; font-weight:700; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; transition: background-color .2s ease, color .2s ease, transform .15s ease; }
+    .btn:hover{ transform: scale(1.05); }
+    .btn:active{ transform: scale(0.97); }
+    .btn-orange{ background:var(--brand-orange); color:#fff; }
+    .btn-orange:hover{ background:var(--brand-yellow); color:#121212; }
+    .btn-outline{ background:transparent; border:1px solid var(--brand-yellow); color:var(--brand-yellow); }
+    .btn-outline:hover{ background:var(--brand-yellow); color:#121212; }
+
+    /* Ícones sociais com hover */
+    .icon-link img, .icon-link svg{ transition: transform .2s ease, filter .2s ease; }
+    .icon-link:hover img, .icon-link:hover svg{ transform: scale(1.1); filter: brightness(1.2); }
+
+    .badge{ padding:.125rem .5rem; border-radius:.375rem; font-size:.75rem; font-weight:600; }
+    .skip-link{ position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus{ left:1rem; top:1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; z-index:50; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"PrimePicksPro",
+    "url":"https://primepickspro.com",
+    "logo":"https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2e21de64-fd5b-4a3d-b0f6-3eccb63f0907.png",
+    "sameAs":["https://t.me/PrimePicksPro","https://t.me/PrimePicksProVIP"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Header -->
+  <header class="bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/70 py-3 md:py-4 px-4 md:px-6 fixed w-full z-20 border-b border-gray-800">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <img rel="icon" src="https://res.cloudinary.com/dklmqjcnk/image/upload/v1757628467/logo_bola_transparente_q9imzu.png" alt="PrimePicksPro logo" class="w-9 h-9 mr-2 rounded" />
+        <h1 class="text-lg md:text-xl font-extrabold brand-orange tracking-tight">PrimePicksPro</h1>
+      </div>
+      <nav aria-label="Primary">
+        <ul class="hidden sm:flex gap-4 md:gap-6 text-sm md:text-base">
+          <li><a class="nav-link" href="#home" onclick="showSection('home')">Home</a></li>
+          <li><a class="nav-link" href="#picks" onclick="showSection('picks')">Daily Picks</a></li>
+          <li><a class="nav-link" href="#history" onclick="showSection('history')">History</a></li>
+          <li><a class="nav-link" href="#plans" onclick="showSection('plans')">Plans</a></li>
+          <li><a class="nav-link" href="#about" onclick="showSection('about')">About</a></li>
+          <li><a class="nav-link" href="#contact" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="sm:hidden btn btn-outline" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
+    </div>
+    <div id="mobileMenu" class="sm:hidden hidden px-4 pb-3">
+      <ul class="flex flex-col gap-2 text-base">
+        <li><a class="nav-link" href="#home" onclick="toggleMobile('home')">Home</a></li>
+        <li><a class="nav-link" href="#picks" onclick="toggleMobile('picks')">Daily Picks</a></li>
+        <li><a class="nav-link" href="#history" onclick="toggleMobile('history')">History</a></li>
+        <li><a class="nav-link" href="#plans" onclick="toggleMobile('plans')">Plans</a></li>
+        <li><a class="nav-link" href="#about" onclick="toggleMobile('about')">About</a></li>
+        <li><a class="nav-link" href="#contact" onclick="toggleMobile('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main" class="pt-24 md:pt-28">
+    <!-- Home -->
+    <section id="home" class="page-section py-16 md:py-20 px-4 md:px-6 max-w-6xl mx-auto text-center">
+      <div class="fade-in">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-3 brand-yellow">PrimePicksPro</h2>
+        <p class="text-xl md:text-2xl mb-2">5 years of consistency in sports betting</p>
+        <p class="text-base md:text-lg mb-8 text-gray-300">Auditable results, bankroll management, and daily entries.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mb-14">
+          <a class="btn btn-orange" href="https://t.me/primepickspro_admin" target="_blank" rel="noopener">Join VIP</a>
+          <button class="btn btn-outline" onclick="showSection('history')">Results</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        <div class="dark-card p-6 rounded-2xl fade-in">
+          <h3 class="text-lg font-bold brand-orange mb-2">ROI</h3>
+          <p class="text-3xl font-extrabold">+18.5%</p>
+          <p class="text-gray-400">Consistent return on investment</p>
+        </div>
+        <div class="dark-card p-6 rounded-2xl fade-in">
+          <h3 class="text-lg font-bold brand-orange mb-2">Accuracy Rate</h3>
+          <p class="text-3xl font-extrabold">72%</p>
+          <p class="text-gray-400">High precision in entries</p>
+        </div>
+        <div class="dark-card p-6 rounded-2xl fade-in">
+          <h3 class="text-lg font-bold brand-orange mb-2">Transparency</h3>
+          <p class="text-3xl font-extrabold">100%</p>
+          <p class="text-gray-400">Auditable and public results</p>
+        </div>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="fade-in">
+        <h3 class="text-2xl font-bold mb-6">Social Proof</h3>
+        <div class="flex justify-center gap-10 flex-wrap opacity-90">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/primepicksprotips/" target="_blank" rel="noopener" aria-label="Instagram" class="icon-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm5.25.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5z"/>
+            </svg>
+          </a>
+
+          <!-- Telegram -->
+          <a href="https://t.me/primepicksprofree" target="_blank" rel="noopener" aria-label="Telegram" class="icon-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-sky-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9.999 15.17 9.765 19c.444 0 .637-.191.868-.418l2.08-1.987 4.309 3.127c.79.433 1.35.206 1.547-.732l2.8-13.167c.27-1.203-.433-1.672-1.193-1.376L2.741 10.36c-1.16.464-1.143 1.127-.197 1.426l4.841 1.51 11.206-7.058c.528-.32 1.009-.144.613.204"/>
+            </svg>
+          </a>
+
+          <!-- Tipstrr -->
+          <a href="https://tipstrr.com/tipster/primepickspro" target="_blank" rel="noopener" aria-label="Tipstrr" class="icon-link">
+            <img src="https://res.cloudinary.com/dklmqjcnk/image/upload/v1757628466/tipstrr_transparent_oty3wg.png" alt="Tipstrr logo" class="h-14 w-14"
+                 onerror="this.onerror=null; this.src='tipstrr_transparent.png';">
+          </a>
+
+          <!-- Blogabet -->
+          <a href="https://primepickspro.blogabet.com/" target="_blank" rel="noopener" aria-label="Blogabet" class="icon-link">
+            <img src="https://res.cloudinary.com/dklmqjcnk/image/upload/v1757628466/blogabet_transparent_wa1mmo.png" alt="Blogabet logo" class="h-14 w-14"
+                 onerror="this.onerror=null; this.src='blogabet_transparent.png';">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Picks -->
+    <section id="picks" class="page-section py-16 md:py-20 px-4 md:px-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Daily Picks</h2>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <input type="date" id="filterDate" class="bg-gray-800 px-4 py-2 rounded" />
+        <input type="text" id="filterLeague" placeholder="Sport / League" class="bg-gray-800 px-4 py-2 rounded flex-1 min-w-[180px]" />
+        <select id="filterStatus" class="bg-gray-800 px-4 py-2 rounded">
+          <option value="">Status</option>
+          <option value="Open">Open</option>
+          <option value="Green">Green</option>
+          <option value="Red">Red</option>
+        </select>
+        <input type="text" id="filterSearch" placeholder="Search by team/market" class="bg-gray-800 px-4 py-2 rounded flex-1 min-w-[200px]" />
+        <button class="btn btn-orange" onclick="applyFilters()">Filter</button>
+      </div>
+
+      <div id="entriesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <div class="flex flex-col items-center mt-10">
+        <button class="btn btn-orange" onclick="showSection('history')">View full history</button>
+        <p class="text-center text-gray-400 italic mt-3 max-w-md">Odds may vary. Gamble responsibly.</p>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="page-section hidden py-16 md:py-20 px-4 md:px-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Results History</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <div class="dark-card p-6 rounded-2xl text-center">
+          <h3 class="brand-orange mb-2 font-semibold">Accuracy %</h3>
+          <p id="accuracyPercent" class="text-3xl font-extrabold">72%</p>
+        </div>
+        <div class="dark-card p-6 rounded-2xl text-center">
+          <h3 class="brand-orange mb-2 font-semibold">Approx. ROI</h3>
+          <p id="roiPercent" class="text-3xl font-extrabold">+18.5%</p>
+        </div>
+        <div class="dark-card p-6 rounded-2xl text-center">
+          <h3 class="brand-orange mb-2 font-semibold">Greens / Reds</h3>
+          <p id="greensReds" class="text-3xl font-extrabold">0 / 0</p>
+        </div>
+      </div>
+
+      <canvas id="resultsChart" class="mb-8"></canvas>
+      <div id="historyContainer" class="space-y-3"></div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" class="page-section hidden py-16 md:py-20 px-4 md:px-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-10">Plans & Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="dark-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-3">VIP Plan</h3>
+          <p class="mb-4 text-gray-300">Exclusive premium entries and 24/7 support.</p>
+          <a class="btn btn-outline ml-2" href="https://t.me/primepicksprofree" target="_blank" rel="noopener">Telegram VIP</a>
+        </div>
+        <div class="dark-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-3">1:1 Consultancy</h3>
+          <p class="mb-4 text-gray-300">Customized strategies for advanced managers.</p>
+          <a class="btn btn-outline" href="https://t.me/primepicksprofree" target="_blank" rel="noopener">Telegram</a>
+        </div>
+        <div class="dark-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold mb-3">Free Group</h3>
+          <p class="mb-4 text-gray-300">Basic free entries with management tips.</p>
+          <a class="btn btn-outline" href="https://t.me/PrimePicksProFree" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-center mt-14 mb-6">FAQ</h3>
+      <div class="space-y-3 text-left max-w-4xl mx-auto text-gray-200">
+        <p><strong>How does payment work?</strong> VIP plan is weekly/monthly via PIX or card.</p>
+        <p><strong>Refund possible?</strong> Yes, if not satisfied, refund within 48h.</p>
+        <p><strong>Bankroll management tips?</strong> Fixed stake, positive ROI, and responsibility.</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="page-section hidden py-16 md:py-20 px-4 md:px-6 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
+      <div class="text-lg mb-8 text-gray-200">
+        <p class="mb-4">We are specialists in international sports betting consultancy, with 5 years of experience focused on transparency and auditable results.</p>
+        <p class="mb-4">Our methodology combines advanced data analysis, risk management, and daily entries across various sports.</p>
+        <p>All results are public and auditable for maximum trust.</p>
+      </div>
+      <div class="text-center">
+        <a class="btn btn-outline mr-2" href="https://t.me/primepickspro_admin" target="_blank" rel="noopener">Message on Telegram</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="page-section hidden py-16 md:py-20 px-4 md:px-6 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact</h2>
+      <form id="contact-form" action="https://formspree.io/f/xqadjekl" method="POST" class="dark-card p-6 rounded-2xl space-y-4">
+        <div>
+          <label for="name" class="block mb-2">Name:</label>
+          <input id="name" name="name" type="text" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+        </div>
+        <div>
+          <label for="email" class="block mb-2">Email:</label>
+          <input id="email" name="email" type="email" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+        </div>
+        <div>
+          <label for="message" class="block mb-2">Message:</label>
+          <textarea id="message" name="message" class="w-full px-4 py-2 bg-gray-800 rounded h-32" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-orange">Send</button>
+      </form>
+      <div class="text-center mt-8">
+        <a class="btn btn-outline" href="https://t.me/primepickspro_admin" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </section>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-black/75 hidden flex justify-center items-start pt-20 overflow-auto z-30" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <div class="dark-card p-6 rounded-2xl max-w-3xl w-full mx-4 shadow-2xl border border-gray-800">
+        <div class="flex items-center justify-between mb-4">
+          <h3 id="adminTitle" class="text-xl font-bold">Admin CMS — Manage Entries</h3>
+          <button class="text-gray-400 hover:text-gray-200" onclick="hideAdmin()" aria-label="Close">✕</button>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="font-semibold mb-2">Saved Entries</h4>
+          <div id="adminEntriesList" class="max-h-64 overflow-auto space-y-2 border border-gray-700 p-2 rounded"></div>
+        </div>
+
+        <hr class="border-gray-700 mb-6" />
+
+        <!-- FORM ADMIN (com Single/Double/Triple + 3 pernas) -->
+        <form id="adminForm" class="space-y-3">
+          <input type="hidden" id="entryId" value="" />
+          <input type="date" id="date" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+
+          <!-- Tipo de Aposta -->
+          <label class="block text-sm font-medium">Tipo de Aposta</label>
+          <select id="betType" class="w-full px-4 py-2 bg-gray-800 rounded" onchange="toggleLegs()">
+            <option value="Single">Single</option>
+            <option value="Double">Double (2 legs)</option>
+            <option value="Triple">Triple (3 legs)</option>
+          </select>
+
+          <!-- PERNA 1 -->
+          <div class="mt-2 p-3 rounded border border-gray-700">
+            <h4 class="font-semibold mb-2">Perna 1</h4>
+            <input type="text" placeholder="League (Perna 1)" id="league1" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" required />
+            <input type="text" placeholder="Match (Perna 1)" id="match1" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" required />
+            <input type="text" placeholder="Market (Perna 1)" id="market1" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" required />
+            <input type="text" placeholder="Odd (Perna 1)" id="odd1" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+          </div>
+
+          <!-- PERNA 2 -->
+          <div id="leg2Box" class="mt-3 p-3 rounded border border-gray-700 hidden">
+            <h4 class="font-semibold mb-2">Perna 2</h4>
+            <input type="text" placeholder="League (Perna 2)" id="league2" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Match (Perna 2)" id="match2" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Market (Perna 2)" id="market2" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Odd (Perna 2)" id="odd2" class="w-full px-4 py-2 bg-gray-800 rounded" />
+          </div>
+
+          <!-- PERNA 3 -->
+          <div id="leg3Box" class="mt-3 p-3 rounded border border-gray-700 hidden">
+            <h4 class="font-semibold mb-2">Perna 3</h4>
+            <input type="text" placeholder="League (Perna 3)" id="league3" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Match (Perna 3)" id="match3" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Market (Perna 3)" id="market3" class="w-full px-4 py-2 bg-gray-800 rounded mb-2" />
+            <input type="text" placeholder="Odd (Perna 3)" id="odd3" class="w-full px-4 py-2 bg-gray-800 rounded" />
+          </div>
+
+          <!-- Odd combinada manual -->
+          <div class="mt-3">
+            <label class="block text-sm text-gray-300 mb-1">Odd combinada (opcional)</label>
+            <input type="text" id="combinedManual" placeholder="Se preencher, sobrescreve o cálculo automático"
+                  class="w-full px-4 py-2 bg-gray-800 rounded" />
+          </div>
+
+          <!-- Campos já existentes -->
+          <input type="text" placeholder="Stake" id="stake" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+          <input type="text" placeholder="Time" id="time" class="w-full px-4 py-2 bg-gray-800 rounded" required />
+          <select id="status" class="w-full px-4 py-2 bg-gray-800 rounded" required>
+            <option value="Open">Open</option>
+            <option value="Green">Green</option>
+            <option value="Red">Red</option>
+          </select>
+          <textarea placeholder="Notes" id="notes" class="w-full px-4 py-2 bg-gray-800 rounded"></textarea>
+          <input type="url" placeholder="External Link (optional)" id="externalLink" class="w-full px-4 py-2 bg-gray-800 rounded" />
+
+          <div class="flex justify-between items-center pt-1">
+            <button type="button" onclick="resetForm()" class="text-gray-400 hover:text-gray-200">Clear</button>
+            <button type="submit" class="btn btn-orange">Save Entry</button>
+          </div>
+        </form>
+
+        <!-- Botão logout admin -->
+        <button class="btn btn-outline mt-4" onclick="adminLogout()">Logout Admin</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 py-10 px-6 text-center border-t border-gray-800 mt-10">
+    <p class="mb-4 text-gray-300">© <span id="year"></span> PrimePicksPro. All rights reserved.</p>
+    <div class="flex justify-center gap-6 text-gray-200">
+      <a href="#" onclick="alert('Terms of Use & Responsibility');return false;">Terms & Responsibility</a>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de login admin -->
+  <button id="adminLoginBtn" class="btn btn-outline fixed bottom-4 right-4 z-50" onclick="adminLogin()">Admin Login</button>
+
+  <script>
+    // -----------------------------
+    // Mock/Storage Data
+    // -----------------------------
+    let entries = JSON.parse(localStorage.getItem('entries')) || [
+      { id: 1, date: '2025-09-09', league: 'Premier League', match: 'Manchester City vs Liverpool', market: 'Over 2.5', odd: '1.85', stake: '1', time: '15:00', status: 'Open', notes: 'Reliable entry' },
+      { id: 2, date: '2025-09-08', league: 'La Liga', match: 'Real Madrid vs Barcelona', market: 'HT/FT Draw', odd: '2.10', stake: '2', time: '18:00', status: 'Green', notes: '' }
+    ];
+
+    // -----------------------------
+    // Helpers
+    // -----------------------------
+    function uniqueSortedDates(list){ return [...new Set(list.map(e=>e.date))].sort(); }
+    function scrollTopSmooth(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function setTodayDefault(){
+      const today = new Date().toISOString().slice(0,10);
+      const dateInput = document.getElementById('filterDate'); if(dateInput) dateInput.value = today;
+      const adminDate = document.getElementById('date'); if(adminDate) adminDate.value = today;
+    }
+
+    function toggleLegs(){
+      const type = document.getElementById('betType').value;
+      const show2 = (type === 'Double' || type === 'Triple');
+      const show3 = (type === 'Triple');
+      document.getElementById('leg2Box').classList.toggle('hidden', !show2);
+      document.getElementById('leg3Box').classList.toggle('hidden', !show3);
+    }
+
+    function parseOdd(v){
+      const n = parseFloat(String(v || '').replace(',', '.'));
+      return isNaN(n) ? null : n;
+    }
+
+    // -----------------------------
+    // Navigation
+    // -----------------------------
+    function showSection(id){
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      scrollTopSmooth();
+      if(id==='picks') loadEntries();
+      if(id==='history') loadHistory();
+    }
+    function toggleMobile(section){ showSection(section); document.getElementById('mobileMenu').classList.add('hidden'); }
+
+    // -----------------------------
+    // Picks & Filters
+    // -----------------------------
+    function applyFilters(){
+      const date = document.getElementById('filterDate').value;
+      const league = document.getElementById('filterLeague').value.toLowerCase();
+      const status = document.getElementById('filterStatus').value;
+      const search = document.getElementById('filterSearch').value.toLowerCase();
+      const filtered = entries.filter(entry => {
+        if (date && entry.date !== date) return false;
+        if (league && !(entry.legs ? entry.legs.some(l => (l.league||'').toLowerCase().includes(league)) : (entry.league||'').toLowerCase().includes(league))) return false;
+        if (status && entry.status !== status) return false;
+        if (search){
+          const hay = entry.legs
+            ? entry.legs.map(l => `${l.match||''} ${l.market||''}`).join(' ').toLowerCase()
+            : (`${entry.match||''} ${entry.market||''}`).toLowerCase();
+          if(!hay.includes(search)) return false;
+        }
+        return true;
+      });
+      displayEntries(filtered);
+    }
+
+    function loadEntries(){
+      const today = new Date().toISOString().slice(0,10);
+      const todaysEntries = entries.filter(e => e.date === today);
+      displayEntries(todaysEntries.length ? todaysEntries : entries);
+    }
+
+    function displayEntries(data){
+      const container = document.getElementById('entriesContainer');
+      container.innerHTML = '';
+      if(!data.length){ container.innerHTML = '<p class="text-center text-gray-400">No entries found.</p>'; return; }
+
+      data.forEach(entry => {
+        const statusClass = entry.status === 'Green' ? 'bg-green-600' : entry.status === 'Red' ? 'bg-red-600' : 'bg-yellow-500 text-black';
+        const card = document.createElement('div');
+        card.className = 'dark-card p-4 rounded-2xl border border-gray-800 hover:border-gray-700 transition';
+
+        card.innerHTML = `
+          <div class="flex justify-between mb-2 items-center">
+            <span class="text-gray-400">${entry.date}</span>
+            <span class="badge ${statusClass}">${entry.status}</span>
+          </div>
+
+          <p class="font-bold">${entry.type || 'Single'}</p>
+
+          <div class="mt-1 space-y-1 text-sm">
+            ${ (entry.legs ? entry.legs : [{
+                  league: entry.league, match: entry.match, market: entry.market, odd: parseOdd(entry.odd)
+                }]).map((l, idx) => `
+              <div class="bg-gray-800/60 p-2 rounded">
+                <div class="text-gray-300"><strong>Leg ${idx+1}:</strong> ${l.league || ''}</div>
+                <div>${l.match || ''}</div>
+                <div class="text-gray-400">${l.market || ''} | Odd: ${l.odd ?? '-'}</div>
+              </div>
+            `).join('') }
+          </div>
+
+          <p class="text-gray-300 mt-2">
+            ${(entry.type === 'Double' || entry.type === 'Triple' || (entry.legs && entry.legs.length > 1))
+              ? `<strong>Odd combinada:</strong> ${(entry.combinedOdd || 0).toFixed(2)} | `
+              : ''}
+            <strong>Stake:</strong> ${entry.stake}u | ${entry.time}
+          </p>
+
+          ${entry.notes ? `<p class="text-gray-500 italic mt-1">${entry.notes}</p>` : '' }
+          ${entry.externalLink ? `<a class="mt-2 inline-block underline" href="${entry.externalLink}" target="_blank" rel="noopener">View more</a>` : '' }
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // -----------------------------
+    // History & Chart
+    // -----------------------------
+    let resultsChart;
+    function loadHistory(){
+      const container = document.getElementById('historyContainer');
+      container.innerHTML = '';
+      entries.forEach(entry => {
+        const row = document.createElement('div');
+        row.className = 'dark-card p-4 rounded-2xl border border-gray-800';
+        const title = entry.legs
+          ? `${entry.type || (entry.legs.length===3?'Triple':entry.legs.length===2?'Double':'Single')} — ${entry.legs.map(l=>l.match).filter(Boolean).join(' + ')}`
+          : `${entry.match}`;
+        row.innerHTML = `${entry.date} — ${title} — <strong>${entry.status}</strong>`;
+        container.appendChild(row);
+      });
+
+      const greens = entries.filter(e => e.status === 'Green').length;
+      const reds = entries.filter(e => e.status === 'Red').length;
+      const total = entries.length;
+      document.getElementById('greensReds').textContent = `${greens} / ${reds}`;
+      document.getElementById('accuracyPercent').textContent = total ? `${Math.round((greens/total)*100)}%` : '0%';
+      const roi = Math.round((greens * 1.5 - reds * 1)); // Simplificado
+      document.getElementById('roiPercent').textContent = total ? `+${roi}%` : '0%';
+
+      const labels = uniqueSortedDates(entries);
+      const series = labels.map(d => {
+        const dayEntries = entries.filter(e => e.date === d);
+        const g = dayEntries.filter(e => e.status === 'Green').length;
+        const r = dayEntries.filter(e => e.status === 'Red').length;
+        return g * 1.5 - r * 1;
+      });
+
+      const canvas = document.getElementById('resultsChart');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if(resultsChart) resultsChart.destroy();
+      resultsChart = new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets: [{ label: 'Profit (simplified)', data: series, borderColor: '#FF6F00', fill: false, tension: 0.3 }] },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+    }
+
+    // -----------------------------
+    // Admin CMS - Auth simples
+    // -----------------------------
+    const ADMIN_PASSWORD = 'suaSenhaSeguraAqui'; // Troque para sua senha forte
+    let isAdmin = false;
+
+    function adminLogin() {
+      const pass = prompt('Digite a senha de administrador:');
+      if (pass === ADMIN_PASSWORD) {
+        isAdmin = true;
+        alert('Acesso de administrador concedido!');
+        document.getElementById('adminLoginBtn').style.display = 'none';
+        showAdmin();
+      } else {
+        alert('Senha incorreta.');
+      }
+    }
+
+    function showAdmin() {
+      if (!isAdmin) {
+        alert('Acesso negado. Faça login como administrador.');
+        return;
+      }
+      document.getElementById('adminModal').classList.remove('hidden');
+      renderAdminEntries();
+      resetForm();
+    }
+
+    function hideAdmin(){ document.getElementById('adminModal').classList.add('hidden'); }
+    function adminLogout() {
+      isAdmin = false;
+      document.getElementById('adminModal').classList.add('hidden');
+      alert('Logout realizado.');
+      document.getElementById('adminLoginBtn').style.display = 'inline-flex';
+    }
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') hideAdmin(); });
+
+    function renderAdminEntries(){
+      const list = document.getElementById('adminEntriesList');
+      list.innerHTML = '';
+      if(entries.length === 0){ list.innerHTML = '<p class="text-gray-400">No entries saved.</p>'; return; }
+      entries.forEach(entry => {
+        const div = document.createElement('div');
+        div.className = 'flex justify-between items-center bg-gray-800 p-2 rounded';
+        const title = entry.legs
+          ? `${entry.type || (entry.legs.length===3?'Triple':entry.legs.length===2?'Double':'Single')} — ${entry.legs.map(l=>l.match).filter(Boolean).join(' + ')}`
+          : `${entry.match}`;
+        div.innerHTML = `
+          <div><strong>${entry.date}</strong> — ${title} (${entry.status})</div>
+          <div class="space-x-2">
+            <button class="text-yellow-400 hover:text-yellow-300" onclick="editEntry(${entry.id})">Edit</button>
+            <button class="text-red-500 hover:text-red-400" onclick="deleteEntry(${entry.id})">Delete</button>
+          </div>`;
+        list.appendChild(div);
+      });
+    }
+
+    // -----------------------------
+    // Reset / Edit
+    // -----------------------------
+    function resetForm(){
+      const today = new Date().toISOString().slice(0,10);
+      document.getElementById('entryId').value = '';
+      document.getElementById('date').value = today;
+
+      // tipo e pernas
+      document.getElementById('betType').value = 'Single';
+      toggleLegs();
+
+      // perna 1
+      document.getElementById('league1').value = '';
+      document.getElementById('match1').value  = '';
+      document.getElementById('market1').value = '';
+      document.getElementById('odd1').value    = '';
+
+      // perna 2
+      document.getElementById('league2').value = '';
+      document.getElementById('match2').value  = '';
+      document.getElementById('market2').value = '';
+      document.getElementById('odd2').value    = '';
+
+      // perna 3
+      document.getElementById('league3').value = '';
+      document.getElementById('match3').value  = '';
+      document.getElementById('market3').value = '';
+      document.getElementById('odd3').value    = '';
+
+      // odd combinada manual
+      document.getElementById('combinedManual').value = '';
+
+      // campos já existentes
+      document.getElementById('stake').value = '';
+      document.getElementById('time').value  = '';
+      document.getElementById('status').value= 'Open';
+      document.getElementById('notes').value = '';
+      document.getElementById('externalLink').value = '';
+    }
+
+    function editEntry(id){
+      const entry = entries.find(e => e.id === id);
+      if(!entry) return alert('Entry not found');
+
+      document.getElementById('entryId').value = entry.id;
+      document.getElementById('date').value = entry.date;
+
+      // Suporta objetos novos (com legs) e antigos (campos soltos)
+      const type = entry.type || (entry.legs ? (entry.legs.length === 3 ? 'Triple' : entry.legs.length === 2 ? 'Double' : 'Single') : 'Single');
+      document.getElementById('betType').value = type;
+      toggleLegs();
+
+      const legs = entry.legs || [{
+        league: entry.league, match: entry.match, market: entry.market, odd: parseOdd(entry.odd)
+      }];
+
+      const l1 = legs[0] || {}, l2 = legs[1] || {}, l3 = legs[2] || {};
+
+      document.getElementById('league1').value = l1.league || '';
+      document.getElementById('match1').value  = l1.match  || '';
+      document.getElementById('market1').value = l1.market || '';
+      document.getElementById('odd1').value    = (l1.odd ?? '') || '';
+
+      document.getElementById('league2').value = l2.league || '';
+      document.getElementById('match2').value  = l2.match  || '';
+      document.getElementById('market2').value = l2.market || '';
+      document.getElementById('odd2').value    = (l2.odd ?? '') || '';
+
+      document.getElementById('league3').value = l3.league || '';
+      document.getElementById('match3').value  = l3.match  || '';
+      document.getElementById('market3').value = l3.market || '';
+      document.getElementById('odd3').value    = (l3.odd ?? '') || '';
+
+      document.getElementById('combinedManual').value = entry.combinedManual || '';
+
+      document.getElementById('stake').value = entry.stake || '';
+      document.getElementById('time').value  = entry.time  || '';
+      document.getElementById('status').value= entry.status|| 'Open';
+      document.getElementById('notes').value = entry.notes || '';
+      document.getElementById('externalLink').value = entry.externalLink || '';
+      scrollTopSmooth();
+    }
+
+    // -----------------------------
+    // Submit (create/update)
+    // -----------------------------
+    document.getElementById('adminForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const id   = document.getElementById('entryId').value;
+      const type = document.getElementById('betType').value; // Single | Double | Triple
+
+      // Leg 1 (obrigatória)
+      const leg1 = {
+        league: document.getElementById('league1').value.trim(),
+        match:  document.getElementById('match1').value.trim(),
+        market: document.getElementById('market1').value.trim(),
+        odd:    parseOdd(document.getElementById('odd1').value)
+      };
+      if(!leg1.league || !leg1.match || !leg1.market || !leg1.odd){
+        alert('Preencha todos os campos da Perna 1 (incluindo odd válida).');
+        return;
+      }
+      const legs = [leg1];
+
+      // Leg 2, se Double/Triple
+      if(type === 'Double' || type === 'Triple'){
+        const leg2 = {
+          league: document.getElementById('league2').value.trim(),
+          match:  document.getElementById('match2').value.trim(),
+          market: document.getElementById('market2').value.trim(),
+          odd:    parseOdd(document.getElementById('odd2').value)
+        };
+        if(!leg2.league || !leg2.match || !leg2.market || !leg2.odd){
+          alert('Perna 2 está incompleta. Preencha todos os campos ou mude o tipo.');
+          return;
+        }
+        legs.push(leg2);
+      }
+
+      // Leg 3, se Triple
+      if(type === 'Triple'){
+        const leg3 = {
+          league: document.getElementById('league3').value.trim(),
+          match:  document.getElementById('match3').value.trim(),
+          market: document.getElementById('market3').value.trim(),
+          odd:    parseOdd(document.getElementById('odd3').value)
+        };
+        if(!leg3.league || !leg3.match || !leg3.market || !leg3.odd){
+          alert('Perna 3 está incompleta. Preencha todos os campos ou mude o tipo.');
+          return;
+        }
+        legs.push(leg3);
+      }
+
+      // Odd combinada (manual > automática)
+      const combinedManual = document.getElementById('combinedManual').value.trim();
+      const combinedAuto   = legs.reduce((acc, l) => acc * (l.odd || 1), 1);
+      const combinedOdd    = combinedManual ? parseOdd(combinedManual) : combinedAuto;
+
+      if(combinedManual && !combinedOdd){
+        alert('Odd combinada manual inválida.');
+        return;
+      }
+
+      const newEntry = {
+        id: id ? Number(id) : Date.now(),
+        date: document.getElementById('date').value,
+        type,
+        legs,
+        combinedOdd,
+        combinedManual: combinedManual || null,
+        stake: document.getElementById('stake').value.trim(),
+        time:  document.getElementById('time').value.trim(),
+        status: document.getElementById('status').value,
+        notes: document.getElementById('notes').value.trim(),
+        externalLink: document.getElementById('externalLink').value.trim(),
+      };
+
+      if(id){
+        const index = entries.findIndex(e => e.id === Number(id));
+        if(index !== -1) entries[index] = newEntry;
+      } else {
+        entries.push(newEntry);
+      }
+
+      saveEntries();
+      renderAdminEntries();
+      loadEntries();
+      if(!document.getElementById('history').classList.contains('hidden')) loadHistory();
+      resetForm();
+      alert('Entry saved successfully!');
+    });
+
+    function deleteEntry(id){
+      if(!confirm('Are you sure you want to delete this entry?')) return;
+      entries = entries.filter(e => e.id !== id);
+      saveEntries();
+      renderAdminEntries();
+      loadEntries();
+      if(!document.getElementById('history').classList.contains('hidden')) loadHistory();
+    }
+
+    function saveEntries(){ localStorage.setItem('entries', JSON.stringify(entries)); }
+
+    // -----------------------------
+    // Animations
+    // -----------------------------
+    const io = new IntersectionObserver((list)=>{ list.forEach(item => { if(item.isIntersecting) item.target.classList.add('visible'); }); },{threshold:.1});
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+    // -----------------------------
+    // Init
+    // -----------------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setTodayDefault();
+    showSection('home');
+
+    // garante que o estado inicial das pernas acompanha o select
+    if (document.getElementById('betType')) toggleLegs();
+
+    // Contact form (Formspree)
+    const form = document.getElementById('contact-form');
+    if(form){
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, { method: form.method, body: formData, headers: { 'Accept': 'application/json' }})
+          .then(response => {
+            if (response.ok) { alert('Message sent successfully!'); form.reset(); }
+            else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) alert(data["errors"].map(error => error["message"]).join(", "));
+                else alert('Oops! There was a problem submitting your form');
+              });
+            }
+          })
+          .catch(() => alert('Oops! There was a problem submitting your form'));
+      });
+    }
+  </script>
+</body>
+</html>
